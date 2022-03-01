@@ -1,37 +1,14 @@
 <?php
 
-class Task{
-    public $description;
-    protected $completed = false;
+require 'index.view.php';
 
-    public function __construct($description)
-    {
-        $this->description = $description;
-    }
-
-    public function complete()
-    {
-        $this->completed = true;
-    }
-
-    public function isComplete()
-    {
-        return $this->completed;
-    }
-
-
-//    public function getDescription()
-//    {
-//        return $this->description;
-//    }
-
+try{
+    $pdo = new PDO('mysql:host=127.0.0.1;dbname=mytodo', 'root','');
+} catch(PDOException $e) {
+    die('Could not connect.');
 }
 
-$tasks = [
-    new Task('Go to the store'),
-    new Task('Finish my screencast'),
-    new Task('Clean my room')
-];
+$statement = $pdo->prepare('select * from todos');
+$statement->execute();
 
-$tasks[0]->complete();
-require 'index.view.php';
+var_dump($statement->fetchAll(PDO::FETCH_OBJ));
