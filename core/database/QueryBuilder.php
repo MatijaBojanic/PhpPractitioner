@@ -1,5 +1,6 @@
 <?php
 
+namespace database;
 class QueryBuilder
 {
     protected $pdo;
@@ -9,7 +10,8 @@ class QueryBuilder
         $this->pdo = $pdo;
     }
 
-    public function selectAll($table){
+    public function selectAll($table)
+    {
         $statement = $this->pdo->prepare("select * from {$table}");
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_CLASS);
