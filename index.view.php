@@ -14,10 +14,16 @@
     </style>
 </head>
 <body>
-    <header>
-        <h1>
-            <?php echo $greeting; ?>
-        </h1>
-    </header>
+    <ul>
+        <?php
+            foreach ($names as $name){
+
+                echo "<li>$name</li>";
+
+            }
+
+
+        ?>
+    </ul>
 </body>
 </html>
