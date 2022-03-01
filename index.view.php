@@ -1,4 +1,8 @@
-
+<?php
+/**
+ * @var array $task
+ */
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,7 +30,7 @@
         </li>
 
         <li>
-            <strong>Personal Responsible: </strong> <?= $task['assigned_to'];?>
+            <strong>Person Responsible: </strong> <?= $task['assigned_to'];?>
         </li>
 
         <li>
