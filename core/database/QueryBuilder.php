@@ -1,6 +1,6 @@
 <?php
 
-namespace database;
+
 class QueryBuilder
 {
     protected $pdo;
