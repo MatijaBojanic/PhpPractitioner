@@ -1,7 +1,4 @@
 <?php
-/**
- * @var array $task
- */
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,24 +15,16 @@
     </style>
 </head>
 <body>
-    <h1>Task For The Day</h1>
-    <ul>
-
-        <li>
-            <strong>Name: </strong> <?= $task['title'];?>
-        </li>
-
-        <li>
-            <strong>Due date: </strong> <?= $task['due'];?>
-        </li>
-
-        <li>
-            <strong>Person Responsible: </strong> <?= $task['assigned_to'];?>
-        </li>
-
-        <li>
-            <strong>Status: </strong> <?= $task['completed'] ? "Complete" : "Incomplete";?>
-        </li>
-    </ul>
+   <ul>
+       <?php foreach ($tasks as $task) : ?>
+           <li>
+               <?php if($task->isComplete()) : ?>
+               <strike><?= $task->description?></strike>
+                <?php else: ?>
+                    <?= $task->description?>
+               <?php endif; ?>
+           </li>
+       <?php endforeach; ?>
+   </ul>
 </body>
 </html>
