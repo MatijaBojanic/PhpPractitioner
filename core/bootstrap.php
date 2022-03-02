@@ -6,10 +6,14 @@ $config = App::get('config');
 App::bind('database', new QueryBuilder(
     Connection::make(App::get('config')['database'])
 ));
-//$app = [];
-//
-//$app['config'] = require 'config.php';
-//
-//$app['database'] =  new QueryBuilder(
-//    Connection::make($app['config']['database'])
-//);
+
+function view($name, $data = [])
+{
+    extract($data);
+    return require "views/{$name}.view.php";
+}
+
+function redirect($path)
+{
+    header("Location: /{$path}");
+}
